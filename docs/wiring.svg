@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 480" font-family="Arial, Helvetica, sans-serif" font-size="14">
+  <rect width="940" height="480" fill="#ffffff"/>
+  <text x="470" y="28" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">Wiring: Nano + MG90S servo + 4x AAA (NiMH)</text>
+
+  <!-- + bus (red) and - bus (black) -->
+  <line x1="200" y1="90" x2="780" y2="90" stroke="#d00" stroke-width="4"/>
+  <line x1="200" y1="370" x2="780" y2="370" stroke="#111" stroke-width="4"/>
+  <text x="215" y="80" font-weight="bold" fill="#d00">+ 5 V rail</text>
+  <text x="215" y="392" font-weight="bold" fill="#111">GND rail</text>
+
+  <!-- Battery pack -->
+  <rect x="30" y="150" width="130" height="110" rx="8" fill="#e8e8e8" stroke="#333" stroke-width="2"/>
+  <text x="95" y="195" text-anchor="middle" font-weight="bold">4x AAA</text>
+  <text x="95" y="215" text-anchor="middle">NiMH, ~4.8 V</text>
+  <text x="95" y="243" text-anchor="middle" font-size="13">(switch holder)</text>
+  <path d="M160 170 H200 V90" fill="none" stroke="#d00" stroke-width="4"/>
+  <path d="M160 250 H200 V370" fill="none" stroke="#111" stroke-width="4"/>
+  <circle cx="200" cy="90" r="5" fill="#d00"/>
+  <circle cx="200" cy="370" r="5" fill="#111"/>
+  <text x="168" y="164" font-weight="bold" fill="#d00">+</text>
+  <text x="168" y="274" font-weight="bold" fill="#111">&#8722;</text>
+
+  <!-- Arduino Nano -->
+  <rect x="300" y="110" width="170" height="220" rx="8" fill="#1d6f8a" stroke="#0b3a4a" stroke-width="2"/>
+  <text x="385" y="140" text-anchor="middle" fill="#fff" font-weight="bold">Arduino Nano</text>
+  <text x="385" y="160" text-anchor="middle" fill="#fff" font-size="12">(no USB plugged in!)</text>
+  <path d="M300 200 H270 V90" fill="none" stroke="#d00" stroke-width="4"/>
+  <path d="M300 260 H250 V370" fill="none" stroke="#111" stroke-width="4"/>
+  <circle cx="270" cy="90" r="5" fill="#d00"/>
+  <circle cx="250" cy="370" r="5" fill="#111"/>
+  <circle cx="300" cy="200" r="5" fill="#ffd54f"/><text x="312" y="205" fill="#fff">5V</text>
+  <circle cx="300" cy="260" r="5" fill="#ffd54f"/><text x="312" y="265" fill="#fff">GND</text>
+  <circle cx="470" cy="230" r="5" fill="#ffd54f"/><text x="428" y="235" fill="#fff">D6</text>
+
+  <!-- Servo -->
+  <rect x="600" y="150" width="120" height="140" rx="8" fill="#333" stroke="#000" stroke-width="2"/>
+  <text x="660" y="205" text-anchor="middle" fill="#fff" font-weight="bold">MG90S</text>
+  <text x="660" y="225" text-anchor="middle" fill="#fff">Servo</text>
+  <text x="610" y="175" fill="#ff8a80" font-size="12">red (+)</text>
+  <text x="610" y="248" fill="#ffcc80" font-size="12">orange (signal)</text>
+  <text x="610" y="283" fill="#bcaaa4" font-size="12">brown (&#8722;)</text>
+
+  <path d="M600 170 H570 V90" fill="none" stroke="#d00" stroke-width="4"/>
+  <circle cx="570" cy="90" r="5" fill="#d00"/>
+  <path d="M600 270 H570 V370" fill="none" stroke="#111" stroke-width="4"/>
+  <circle cx="570" cy="370" r="5" fill="#111"/>
+  <path d="M470 230 H600" fill="none" stroke="#f90" stroke-width="4"/>
+
+  <!-- Capacitor: across the rails, right behind the servo, nothing crosses it -->
+  <line x1="780" y1="90" x2="780" y2="200" stroke="#d00" stroke-width="3"/>
+  <line x1="780" y1="256" x2="780" y2="370" stroke="#111" stroke-width="3"/>
+  <circle cx="780" cy="90" r="5" fill="#d00"/>
+  <circle cx="780" cy="370" r="5" fill="#111"/>
+  <rect x="762" y="200" width="36" height="56" rx="4" fill="#2b4b9b" stroke="#122" stroke-width="2"/>
+  <rect x="762" y="238" width="36" height="18" fill="#cfd8ff"/>
+  <text x="780" y="224" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">+</text>
+  <text x="780" y="252" text-anchor="middle" font-size="16" font-weight="bold" fill="#123">&#8722;</text>
+  <text x="808" y="222" font-size="12" font-weight="bold">470&#8211;1000 &#181;F</text>
+  <text x="808" y="238" font-size="12">electrolytic</text>
+  <text x="808" y="254" font-size="12">&#8805; 10 V</text>
+  <text x="808" y="156" font-size="12">long leg (+)</text>
+  <text x="808" y="316" font-size="12">short leg / stripe (&#8722;)</text>
+
+  <!-- Notes -->
+  <g font-size="13" fill="#222">
+    <text x="30" y="425"><tspan font-weight="bold">Capacitor:</tspan> long leg (+) to the 5 V rail, short leg (stripe side, &#8722;) to the GND rail. Mount it right at the servo, with short legs.</text>
+    <text x="30" y="445">Unplug the battery pack before connecting USB for upload. Never feed the 5V pin and USB together.</text>
+  </g>
+</svg>
