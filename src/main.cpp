@@ -8,6 +8,9 @@ const int LED_PIN = LED_BUILTIN; // onboard LED (D13)
 const int LEFT  = 10;   // stay a bit away from 0/180 so the servo doesn't hit its end stops
 const int RIGHT = 170;
 
+const int SPEED = 3; // larger value = slower movement
+const int DELAY = 100; // delay between sweeps
+
 void setup() {
   pinMode(LED_PIN, OUTPUT);
   // 5 quick blinks = new sketch was uploaded and is running
@@ -28,15 +31,15 @@ void loop() {
   digitalWrite(LED_PIN, HIGH);
   for (int pos = LEFT; pos <= RIGHT; pos++) {
     myServo.write(pos);
-    delay(0);           // larger value = slower movement
+    delay(SPEED);           // larger value = slower movement
   }
-  delay(50);
+  delay(DELAY);
 
   // right to left (LED off)
   digitalWrite(LED_PIN, LOW);
   for (int pos = RIGHT; pos >= LEFT; pos--) {
     myServo.write(pos);
-    delay(0);
+    delay(SPEED);
   }
-  delay(50);
+  delay(DELAY);
 }

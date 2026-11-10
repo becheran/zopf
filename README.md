@@ -10,7 +10,7 @@ Servo sweep on an Arduino Nano, powered by 4x AAA NiMH cells (~4.8 V) connected 
 
 | Part | Connects to |
 |------|-------------|
-| Battery + | Nano 5V, servo red |
+| Battery + | Switch middle pin (COM); switch outer pin to Nano 5V and servo red (other outer pin unused) |
 | Battery - | Nano GND, servo brown |
 | Servo signal (orange) | Nano D6 |
 | Capacitor (470-1000 uF, >=10 V) | + leg (long) to servo red / 5V, - leg (short, stripe) to servo brown / GND, placed right at the servo |
