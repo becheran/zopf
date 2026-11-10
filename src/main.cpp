@@ -28,15 +28,15 @@ void loop() {
   digitalWrite(LED_PIN, HIGH);
   for (int pos = LEFT; pos <= RIGHT; pos++) {
     myServo.write(pos);
-    delay(10);          // larger value = slower movement
+    delay(0);           // larger value = slower movement
   }
-  delay(300);
+  delay(50);
 
   // right to left (LED off)
   digitalWrite(LED_PIN, LOW);
   for (int pos = RIGHT; pos >= LEFT; pos--) {
     myServo.write(pos);
-    delay(10);
+    delay(0);
   }
-  delay(300);
+  delay(50);
 }
