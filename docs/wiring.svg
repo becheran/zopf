@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 495" font-family="Arial, Helvetica, sans-serif" font-size="14">
-  <rect width="940" height="495" fill="#ffffff"/>
-  <text x="470" y="28" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">Wiring: Nano + MG90S servo + 4x AAA (NiMH)</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 560" font-family="Arial, Helvetica, sans-serif" font-size="14">
+  <rect width="940" height="560" fill="#ffffff"/>
+  <text x="470" y="28" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">Wiring: Nano + MG90S servo + 4x AAA (NiMH) + PTC fuse</text>
 
   <!-- + bus (red) and - bus (black) -->
   <line x1="200" y1="90" x2="780" y2="90" stroke="#d00" stroke-width="4"/>
@@ -8,13 +8,6 @@
   <text x="215" y="80" font-weight="bold" fill="#d00">+ 5 V rail</text>
   <text x="215" y="392" font-weight="bold" fill="#111">GND rail</text>
 
-  <!-- Battery pack -->
-  <rect x="30" y="150" width="130" height="110" rx="8" fill="#e8e8e8" stroke="#333" stroke-width="2"/>
-  <text x="95" y="195" text-anchor="middle" font-weight="bold">4x AAA</text>
-  <text x="95" y="215" text-anchor="middle">NiMH, ~4.8 V</text>
-  <text x="95" y="243" text-anchor="middle" font-size="13">(switch holder)</text>
-  <path d="M160 170 H175 V140 H95 V128" fill="none" stroke="#d00" stroke-width="4"/>
-  <path d="M132 128 H190 V90 H200" fill="none" stroke="#d00" stroke-width="4"/>
   <!-- SPDT switch -->
   <text x="40" y="88" font-size="12" font-weight="bold" fill="#222">ON/OFF switch (SPDT, 3 pins)</text>
   <line x1="58" y1="118" x2="58" y2="128" stroke="#888" stroke-width="3"/>
@@ -24,11 +17,27 @@
   <text x="58" y="111" text-anchor="middle" font-size="10" fill="#555">unused</text>
   <text x="95" y="111" text-anchor="middle" font-size="10" font-weight="bold">COM</text>
   <text x="132" y="111" text-anchor="middle" font-size="10">to circuit</text>
-  <path d="M160 250 H200 V370" fill="none" stroke="#111" stroke-width="4"/>
+  <path d="M132 128 H190 V90 H200" fill="none" stroke="#d00" stroke-width="4"/>
   <circle cx="200" cy="90" r="5" fill="#d00"/>
+
+  <!-- PTC fuse: between battery + and switch COM, as close to the battery as possible -->
+  <line x1="95" y1="128" x2="95" y2="150" stroke="#d00" stroke-width="4"/>
+  <rect x="80" y="150" width="30" height="40" rx="6" fill="#f2b632" stroke="#7a5200" stroke-width="2"/>
+  <text x="95" y="175" text-anchor="middle" font-size="11" font-weight="bold" fill="#3a2700">PTC</text>
+  <line x1="95" y1="190" x2="95" y2="210" stroke="#d00" stroke-width="4"/>
+  <text x="74" y="162" text-anchor="end" font-size="12" font-weight="bold" fill="#7a5200">fuse</text>
+  <text x="74" y="177" text-anchor="end" font-size="11" fill="#7a5200">0.5 A hold</text>
+  <text x="74" y="191" text-anchor="end" font-size="11" fill="#7a5200">1 A trip</text>
+
+  <!-- Battery pack -->
+  <rect x="30" y="210" width="130" height="110" rx="8" fill="#e8e8e8" stroke="#333" stroke-width="2"/>
+  <text x="104" y="230" font-weight="bold" fill="#d00">+</text>
+  <text x="95" y="258" text-anchor="middle" font-weight="bold">4x AAA</text>
+  <text x="95" y="278" text-anchor="middle">NiMH, ~4.8 V</text>
+  <text x="95" y="302" text-anchor="middle" font-size="13">(battery holder)</text>
+  <path d="M160 300 H200 V370" fill="none" stroke="#111" stroke-width="4"/>
+  <text x="166" y="294" font-weight="bold" fill="#111">&#8722;</text>
   <circle cx="200" cy="370" r="5" fill="#111"/>
-  <text x="168" y="164" font-weight="bold" fill="#d00">+</text>
-  <text x="168" y="274" font-weight="bold" fill="#111">&#8722;</text>
 
   <!-- Arduino Nano -->
   <rect x="300" y="110" width="170" height="220" rx="8" fill="#1d6f8a" stroke="#0b3a4a" stroke-width="2"/>
@@ -73,8 +82,11 @@
 
   <!-- Notes -->
   <g font-size="13" fill="#222">
-    <text x="30" y="425"><tspan font-weight="bold">Capacitor:</tspan> long leg (+) to the 5 V rail, short leg (stripe side, &#8722;) to the GND rail. Mount it right at the servo, with short legs.</text>
-    <text x="30" y="445">Unplug the battery pack before connecting USB for upload. Never feed the 5V pin and USB together.</text>
-    <text x="30" y="465"><tspan font-weight="bold">Switch:</tspan> battery + goes to the middle pin (COM). One outer pin goes on to the 5 V rail, the other outer pin stays unconnected.</text>
+    <text x="30" y="425"><tspan font-weight="bold" fill="#7a5200">PTC fuse:</tspan> in the battery + wire, BEFORE the switch and as close to the battery as possible, so it also protects</text>
+    <text x="30" y="443">the switch and all wires. If the servo is blocked for a while, the fuse heats up and cuts the current. To reset it: switch off,</text>
+    <text x="30" y="461">wait ~1 minute, remove what blocked the tail, switch on again.</text>
+    <text x="30" y="485"><tspan font-weight="bold">Capacitor:</tspan> long leg (+) to the 5 V rail, short leg (stripe side, &#8722;) to the GND rail. Mount it right at the servo, with short legs.</text>
+    <text x="30" y="505"><tspan font-weight="bold">Switch:</tspan> fuse goes to the middle pin (COM). One outer pin goes on to the 5 V rail, the other outer pin stays unconnected.</text>
+    <text x="30" y="525">Unplug the battery pack before connecting USB for upload. Never feed the 5V pin and USB together.</text>
   </g>
 </svg>
